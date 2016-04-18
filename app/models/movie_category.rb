@@ -1,6 +1,6 @@
 class MovieCategory < ActiveRecord::Base
-  validates :movie_id, :category_id, presence: true
-  validates :category_id, uniqueness: { scope: [:movie_id] }
+  validates :movie, :category, presence: true
+  validates :category, uniqueness: { scope: [:movie] }
 
   belongs_to :movie, :category
 

@@ -5,5 +5,5 @@ class Movie < ActiveRecord::Base
   has_many :reviews
   has_many :reviewers, through: :reviews
   has_many :categories, through: :movie_categories
-
+  has_many :movie_categories
 end
