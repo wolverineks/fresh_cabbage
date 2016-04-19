@@ -1,8 +1,24 @@
 Rails.application.routes.draw do
 
-  devise_for :users, :controllers => { registrations: 'registrations' }
   # Recommended by Devise
-  root to: "static#index"
+  root to: "movies#index"
+
+  resources :movies, only: [:index]
+
+  devise_for :users, :controllers => { registrations: 'registrations' }
+
+  namespace :admin do
+    resources :users
+    resources :categories
+    resources :comments
+    resources :movies
+    resources :movie_categories
+    resources :ratings
+    resources :reviews
+
+    root to: "users#index"
+  end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

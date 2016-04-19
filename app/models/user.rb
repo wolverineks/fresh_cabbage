@@ -5,9 +5,21 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :email, :username, { uniqueness: true, presence: true }
-
   has_many :ratings
-  has_many :reviews
+  has_many :reviews, foreign_key: :reviewer
   has_many :comments
+
+
+  def admin?
+  	role == "admin"
+  end
+
+  def critic?
+  	role == "critic"
+  end
+
+  def user?
+  	role == "user"
+  end
 
 end
