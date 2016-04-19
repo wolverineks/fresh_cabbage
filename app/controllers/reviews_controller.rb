@@ -1,8 +1,9 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show]
+  before_action :set_movie, only: [:index]
 
   def index
-    @reviews = Review.all.where("movie_id = #{params[:movie_id]}")
+    @reviews = @movie.reviews
   end
 
   def show
@@ -13,5 +14,9 @@ class ReviewsController < ApplicationController
 
   def set_review
     @review = Review.find(params[:id])
+  end
+
+  def set_movie
+    @movie = Movie.find(params[:movie_id])
   end
 end
