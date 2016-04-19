@@ -1,6 +1,8 @@
 # Delete current DB contents
 User.delete_all
 Movie.delete_all
+Review.delete_all
+Comment.delete_all
 
 # Create Users
 User.create!({
@@ -25,7 +27,7 @@ User.create!({
   })
 
 20.times do
-  User.create({
+  User.create!({
     name: Faker::Name.name,
     username: Faker::Internet.user_name,
     email: Faker::Internet.email,
@@ -36,7 +38,7 @@ end
 users = User.all
 
 20.times do
-  User.create({
+  User.create!({
     name: Faker::Name.name,
     username: Faker::Internet.user_name,
     email: Faker::Internet.email,
@@ -47,7 +49,7 @@ end
 critics = User.where(role: "critic")
 
 50.times do 
-    Movie.create({
+    Movie.create!({
     title: Faker::Lorem.sentence,
     mpaa_rating: ['G','PG','PG-13','NC-17','R','X'].sample,
     runtime: Faker::Number.between(60, 240),
@@ -59,7 +61,7 @@ end
 movies = Movie.all
 
 100.times do 
-    Review.create({
+    Review.create!({
     reviewer: critics.sample,
     body: Faker::Lorem.paragraph,
   })
@@ -67,7 +69,7 @@ end
 reviews = Review.all
 
 200.times do 
-    Comment.create({
+    Comment.create!({
     review: reviews.sample,
     body: Faker::Lorem.paragraph,
     user: users.sample
