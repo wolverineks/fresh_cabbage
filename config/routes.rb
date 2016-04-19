@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'movies/index'
-
   devise_for :users, :controllers => { registrations: 'registrations' }
   # Recommended by Devise
-  root to: "static#index"
+  root to: "movies#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
