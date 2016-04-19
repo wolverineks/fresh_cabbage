@@ -1,10 +1,11 @@
 # Delete current DB contents
 User.delete_all
 Movie.delete_all
-Review.delete_all
-Comment.delete_all
 Category.delete_all
+MovieCategory.delete_all
+Review.delete_all
 Rating.delete_all
+Comment.delete_all
 
 start = Time.now
 
@@ -13,21 +14,24 @@ User.create!({
   name: "q bert",
   username: "q",
   password: "password",
-  email: "q@q.com"
+  email: "q@q.com",
+  role: "user"
   })
 
 User.create!({
   name: "Steve Jobs",
   username: "sjobs",
   password: "password",
-  email: "steve@apple.com"
+  email: "steve@apple.com",
+  role: "admin"
   })
 
 User.create!({
   name: "Bill Gates",
   username: "bgates",
   password: "password",
-  email: "bill@ms.com"
+  email: "bill@ms.com",
+  role: "critic"
   })
 
 20.times do
@@ -76,9 +80,10 @@ movies = Movie.all
     reviewer: critics.sample,
     body: Faker::Lorem.paragraph(6),
     movie: movies.sample
-  })
-end
-reviews = Review.all
+    })
+  end
+  reviews = Review.all
+
 
 200.times do
     Comment.create!({
@@ -89,8 +94,8 @@ reviews = Review.all
 end
 comments = Comment.all
 
-15.times do
-  Rating.create!({
+200.times do
+  Rating.create({
     user: users.sample,
     movie: movies.sample,
     value: [0, 1, 2, 3, 4].sample + [0, 0.5, 1].sample
@@ -108,7 +113,8 @@ puts "SEEDING COMPLETE"
 puts "#{User.count} Users created."
 puts "#{critics.count} Critics created."
 puts "#{Movie.count} Movies created."
-puts "#{Review.count} Reviews created."
-puts "#{Comment.count} Comments created."
-puts "#{Rating.count} Ratingss created."
 puts "#{Category.count} Categories created."
+puts "#{MovieCategory.count} MovieCategories exist."
+puts "#{Review.count} Reviews created."
+puts "#{Rating.count} Ratings created."
+puts "#{Comment.count} Comments created."
