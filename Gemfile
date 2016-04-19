@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby "2.1.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
@@ -13,6 +13,11 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+
+# user authentication
+gem 'devise'
+
+gem 'slim-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
