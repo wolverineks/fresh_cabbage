@@ -2,6 +2,7 @@
 User.delete_all
 Movie.delete_all
 Category.delete_all
+MovieCategory.delete_all
 Review.delete_all
 Rating.delete_all
 Comment.delete_all
@@ -11,21 +12,24 @@ User.create!({
   name: "q bert",
   username: "q",
   password: "password",
-  email: "q@q.com"
+  email: "q@q.com",
+  role: "user"
   })
 
 User.create!({
   name: "Steve Jobs",
   username: "sjobs",
   password: "password",
-  email: "steve@apple.com"
+  email: "steve@apple.com",
+  role: "admin"
   })
 
 User.create!({
   name: "Bill Gates",
   username: "bgates",
   password: "password",
-  email: "bill@ms.com"
+  email: "bill@ms.com",
+  role: "critic"
   })
 
 20.times do
@@ -53,24 +57,23 @@ critics = User.where(role: "critic")
 50.times do 
     Movie.create!({
     title: Faker::Lorem.sentence,
-    mpaa_rating: ['G','PG','PG-13','NC-17','R','X'].sample,
+    mpaa_rating: ['G','PG','PG-13','NC-17','R'].sample,
     runtime: Faker::Number.between(60, 240),
     release_date: Faker::Time.between(DateTime.now - 10, DateTime.now - 6),
     synopsis: Faker::Lorem.paragraph,
   })
 end
-
 movies = Movie.all
 
 10.times do
-  Category.create!({
-    name: Faker::Name.word,
+  Category.create({
+    name: Faker::Lorem.word,
   })
 end
 categories = Category.all
 
 100.times do 
-  MovieCategory.create!({
+  MovieCategory.create({
     movie: movies.sample,
     category: categories.sample
   })
@@ -80,13 +83,14 @@ end
 100.times do 
     Review.create!({
     reviewer: critics.sample,
-    body: Faker::Lorem.paragraph,
+    movie: movies.sample,
+    body: Faker::Lorem.paragraph(10, true, 10),
   })
 end
 reviews = Review.all
 
 100.times do
-  Rating.create!({
+  Rating.create({
     value: Faker::Number.between(0,5),
     user: users.sample,
     movie: movies.sample,
@@ -109,6 +113,7 @@ puts "#{User.count} Users created."
 puts "#{critics.count} Critics created."
 puts "#{Movie.count} Movies created."
 puts "#{Category.count} Categories created."
+puts "#{MovieCategory.count} MovieCategories created."
 puts "#{Review.count} Reviews created."
 puts "#{Rating.count} Ratings created."
 puts "#{Comment.count} Comments created."
