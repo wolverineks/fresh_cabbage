@@ -10,6 +10,10 @@ class Movie < ActiveRecord::Base
     ratings.critic_ratings
   end
 
+  def user_ratings
+    ratings.user_ratings
+  end
+
   def average_critic_rating
     ratings.average_critic_rating
   end
