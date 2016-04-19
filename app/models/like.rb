@@ -1,4 +1,4 @@
-class ReviewLike < ActiveRecord::Base
+class Like < ActiveRecord::Base
 	validates :review, :user, presence: true
 	validates :user, uniqueness: { scope: [:review] }
 
