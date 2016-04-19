@@ -13,16 +13,16 @@ class User < ActiveRecord::Base
   scope :admins, ->{ where(role: 'admin') }
   scope :users, ->{ where(role: 'user') }
 
-  def is_admin?
-  	self.role == "admin"
+  def admin?
+  	role == "admin"
   end
 
-  def is_critic?
-  	self.role == "critic"
+  def critic?
+  	role == "critic"
   end
 
-  def is_user?
-  	self.role == "user" || self.role == nil
+  def user?
+  	role == "user"
   end
 
 end

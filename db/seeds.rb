@@ -7,6 +7,8 @@ Review.delete_all
 Rating.delete_all
 Comment.delete_all
 
+start = Time.now
+
 # Create Users
 User.create!({
   name: "q bert",
@@ -54,7 +56,7 @@ users = User.all
 end
 critics = User.where(role: "critic")
 
-50.times do 
+200.times do
     Movie.create!({
     title: Faker::Lorem.sentence,
     mpaa_rating: ['G','PG','PG-13','NC-17','R'].sample,
@@ -65,55 +67,54 @@ critics = User.where(role: "critic")
 end
 movies = Movie.all
 
-10.times do
-  Category.create({
-    name: Faker::Lorem.word,
-  })
-end
-categories = Category.all
-
-100.times do 
-  MovieCategory.create({
-    movie: movies.sample,
-    category: categories.sample
-  })
-end
-
-
-100.times do 
-    Review.create!({
-    reviewer: critics.sample,
-    movie: movies.sample,
-    body: Faker::Lorem.paragraph(10, true, 10),
-  })
-end
-reviews = Review.all
+25.times do
+  Category.create!({
+    movies: movies.sample(15),
+    name: Faker::Commerce.department,
+    })
+  end
+  categories= Category.all
 
 100.times do
-  Rating.create({
-    value: Faker::Number.between(0,5),
-    user: users.sample,
-    movie: movies.sample,
-  })
-end
-ratings = Rating.all
+    Review.create!({
+    reviewer: critics.sample,
+    body: Faker::Lorem.paragraph(6),
+    movie: movies.sample
+    })
+  end
+  reviews = Review.all
 
-200.times do 
+
+200.times do
     Comment.create!({
     review: reviews.sample,
-    body: Faker::Lorem.paragraph,
+    body: Faker::Lorem.paragraph(6),
     user: users.sample
   })
 end
 comments = Comment.all
 
+200.times do
+  Rating.create({
+    user: users.sample,
+    movie: movies.sample,
+    value: [0, 1, 2, 3, 4].sample + [0, 0.5, 1].sample
+  })
+end
+
+finish = Time.now
+duration = (finish - start).round(1)
+
+puts "Seed started at: #{start}"
+puts "Seed finished at: #{finish}"
+puts "Duration: #{duration} seconds"
 
 puts "SEEDING COMPLETE"
 puts "#{User.count} Users created."
 puts "#{critics.count} Critics created."
 puts "#{Movie.count} Movies created."
 puts "#{Category.count} Categories created."
-puts "#{MovieCategory.count} MovieCategories created."
+puts "#{MovieCategory.count} MovieCategories exist."
 puts "#{Review.count} Reviews created."
 puts "#{Rating.count} Ratings created."
 puts "#{Comment.count} Comments created."
