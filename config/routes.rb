@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'movies/index'
+
   devise_for :users, :controllers => { registrations: 'registrations' }
   # Recommended by Devise
   root to: "static#index"
