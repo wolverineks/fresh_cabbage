@@ -5,9 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :email, :username, { uniqueness: true, presence: true }
-
-  has_many :ratingsreviewer
-  has_many :reviews
+  has_many :ratings
+  has_many :reviews, foreign_key: :reviewer
   has_many :comments
-
 end
