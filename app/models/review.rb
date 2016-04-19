@@ -3,7 +3,6 @@ class Review < ActiveRecord::Base
   validates :body, {presence: true, length: { minimum: 100 } }
   belongs_to :reviewer, class_name: User
   belongs_to :movie
-  has_many :likes, class_name: ReviewLike
-  has_many :favoritors, through: :likes, source: :user
+  has_many :likes
 
 end

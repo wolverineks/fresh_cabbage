@@ -8,7 +8,7 @@ Category.delete_all
 MovieCategory.delete_all
 Review.delete_all
 Rating.delete_all
-ReviewLike.delete_all
+Like.delete_all
 
 
 # Create Users
@@ -83,9 +83,8 @@ movies = Movie.all
     body: Faker::Lorem.paragraph(6),
     movie: movies.sample,
     published_on: [DateTime.now + (-100..0).to_a.sample, nil].sample,
-    favoritors: users.sample(rand(20))
     })
-    review.published = review.published_on ? true : false
+    review.published_on ? true : false
     review.save!
   end
   reviews = Review.all
@@ -95,6 +94,13 @@ movies = Movie.all
     user: users.sample,
     movie: movies.sample,
     value: [0, 1, 2, 3, 4].sample + [0, 0.5, 1].sample,
+  })
+end
+
+200.times do 
+  Like.create({
+    user: users.sample,
+    review: reviews.sample
   })
 end
 
@@ -112,4 +118,4 @@ puts "#{Category.count} Categories created."
 puts "#{MovieCategory.count} MovieCategories exist."
 puts "#{Review.count} Reviews created."
 puts "#{Rating.count} Ratings created."
-puts "#{ReviewLike.count} ReviewLikes created."
+puts "#{Like.count} Likes created."
