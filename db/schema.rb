@@ -54,10 +54,12 @@ ActiveRecord::Schema.define(version: 20160419030019) do
   add_index "ratings", ["user_id", "movie_id"], name: "index_ratings_on_user_id_and_movie_id", unique: true, using: :btree
 
   create_table "reviews", force: :cascade do |t|
-    t.integer  "reviewer_id", null: false
-    t.text     "body",        null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "reviewer_id",                 null: false
+    t.text     "body",                        null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "movie_id"
+    t.boolean  "published",   default: false
   end
 
   create_table "users", force: :cascade do |t|
