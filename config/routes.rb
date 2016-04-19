@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
     resources :categories
-    resources :comments
     resources :movies
     resources :movie_categories
     resources :ratings
