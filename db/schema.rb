@@ -11,21 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160419162810) do
+ActiveRecord::Schema.define(version: 20160419190838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
     t.string "name", null: false
-  end
-
-  create_table "comments", force: :cascade do |t|
-    t.integer  "user_id",    null: false
-    t.text     "body",       null: false
-    t.integer  "review_id",  null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "movie_categories", force: :cascade do |t|
@@ -52,6 +44,15 @@ ActiveRecord::Schema.define(version: 20160419162810) do
   end
 
   add_index "ratings", ["user_id", "movie_id"], name: "index_ratings_on_user_id_and_movie_id", unique: true, using: :btree
+
+  create_table "review_likes", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "review_id",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "review_likes", ["user_id", "review_id"], name: "index_review_likes_on_user_id_and_review_id", unique: true, using: :btree
 
   create_table "reviews", force: :cascade do |t|
     t.integer  "reviewer_id",                 null: false

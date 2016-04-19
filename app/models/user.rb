@@ -6,9 +6,9 @@ class User < ActiveRecord::Base
 
   validates :email, :username, { uniqueness: true, presence: true }
   has_many :ratings
-  has_many :reviews, foreign_key: :reviewer
-  has_many :comments
-
+  has_many :reviews, foreign_key: :reviewer_id
+  has_many :review_likes, class_name: ReviewLike
+  has_many :liked_reviews, through: :review_likes, source: :review 
 
   def admin?
   	role == "admin"
