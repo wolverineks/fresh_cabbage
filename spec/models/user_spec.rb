@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
-  # let(:valid_user) { FactoryGirl.create(:user) }
+  let(:valid_user) { FactoryGirl.create(:user) }
 
   it "has a valid factory" do
-    # Factory.create(:user).should be_valid
+    FactoryGirl.create(:user).should be_valid
   end
 
   it 'has a password' do

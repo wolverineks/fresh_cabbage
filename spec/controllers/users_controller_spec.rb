@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
 
-  # let(:user) { Factory(:user) }
+  let(:user) { FactoryGirl(:user) }
 
   describe "GET #show" do
     it "assigns the requested user as @user" do
