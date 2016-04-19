@@ -78,15 +78,13 @@ movies = Movie.all
   categories= Category.all
 
 100.times do
-  review = Review.new({
+  review = Review.create!({
     reviewer: critics.sample,
     body: Faker::Lorem.paragraph(6),
     movie: movies.sample,
     published_on: [DateTime.now + (-100..0).to_a.sample, nil].sample,
     favoritors: users.sample(rand(20))
     })
-    review.published = review.published_on ? true : false
-    review.save!
   end
   reviews = Review.all
 

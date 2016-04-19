@@ -31,6 +31,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'administrate'
 gem 'administrate-field-select', '~> 2.0', require: 'administrate/field/select_basic'
 gem 'pg_search'
+gem 'hirb'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
