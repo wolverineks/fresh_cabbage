@@ -1,7 +1,7 @@
 <% @reviews.each do |review| %>
   <ul>
     <li>
-    <%= link_to @movie %>: <%=movie.title%>
+    <%= link_to truncate(review.body, length: 25), review %>
     </li>
   </ul>
 <% end %>
