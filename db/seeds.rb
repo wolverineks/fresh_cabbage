@@ -5,7 +5,7 @@ Category.delete_all
 MovieCategory.delete_all
 Review.delete_all
 Rating.delete_all
-Comment.delete_all
+ReviewLike.delete_all
 
 start = Time.now
 
@@ -76,23 +76,14 @@ movies = Movie.all
   categories= Category.all
 
 100.times do
-    Review.create!({
+    Review.create({
     reviewer: critics.sample,
     body: Faker::Lorem.paragraph(6),
-    movie: movies.sample
+    movie: movies.sample,
+    favoritors: users.sample(rand(20))
     })
   end
   reviews = Review.all
-
-
-200.times do
-    Comment.create!({
-    review: reviews.sample,
-    body: Faker::Lorem.paragraph(6),
-    user: users.sample
-  })
-end
-comments = Comment.all
 
 200.times do
   Rating.create({
@@ -117,4 +108,4 @@ puts "#{Category.count} Categories created."
 puts "#{MovieCategory.count} MovieCategories exist."
 puts "#{Review.count} Reviews created."
 puts "#{Rating.count} Ratings created."
-puts "#{Comment.count} Comments created."
+puts "#{ReviewLike.count} ReviewLikes created."
