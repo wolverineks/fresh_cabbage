@@ -1,7 +1,9 @@
 # Delete current DB contents
 User.delete_all
 Movie.delete_all
+Category.delete_all
 Review.delete_all
+Rating.delete_all
 Comment.delete_all
 
 # Create Users
@@ -60,6 +62,22 @@ end
 
 movies = Movie.all
 
+10.times do
+  Category.create!({
+    name: Faker::Name.word,
+  })
+end
+categories = Category.all
+
+100.times do
+  Rating.create!({
+    value: Faker::Number.between(0,5),
+    user: users.sample,
+    movie: movies.sample,
+  })
+end
+categories = Category.all
+
 100.times do 
     Review.create!({
     reviewer: critics.sample,
@@ -82,5 +100,7 @@ puts "SEEDING COMPLETE"
 puts "#{User.count} Users created."
 puts "#{critics.count} Critics created."
 puts "#{Movie.count} Movies created."
+puts "#{Category.count} Categories created."
 puts "#{Review.count} Reviews created."
+puts "#{Rating.count} Ratings created."
 puts "#{Comment.count} Comments created."
