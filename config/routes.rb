@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   # Recommended by Devise
   root to: "movies#index"
 
+  resources :movies, only: [:index]
+
   devise_for :users, :controllers => { registrations: 'registrations' }
 
   namespace :admin do
