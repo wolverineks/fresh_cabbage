@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   validates :email, :username, { uniqueness: true, presence: true }
 
-  has_many :ratingsreviewer
+  # has_many :ratingsreviewer
   has_many :reviews
   has_many :comments
 
