@@ -1,3 +1,6 @@
+start = Time.now
+puts "Seed started at: #{start}"
+
 # Delete current DB contents
 User.delete_all
 Movie.delete_all
@@ -5,9 +8,8 @@ Category.delete_all
 MovieCategory.delete_all
 Review.delete_all
 Rating.delete_all
-Comment.delete_all
+Like.delete_all
 
-start = Time.now
 
 # Create Users
 User.create!({
@@ -57,11 +59,11 @@ end
 critics = User.where(role: "critic")
 
 200.times do
-    Movie.create!({
+  Movie.create!({
     title: Faker::Lorem.sentence,
     mpaa_rating: ['G','PG','PG-13','NC-17','R'].sample,
     runtime: Faker::Number.between(60, 240),
-    release_date: Faker::Time.between(DateTime.now - 10, DateTime.now - 6),
+    release_date: Faker::Time.between(DateTime.now - 10000, DateTime.now + 300),
     synopsis: Faker::Lorem.paragraph,
   })
 end
@@ -76,36 +78,35 @@ movies = Movie.all
   categories= Category.all
 
 100.times do
-    Review.create!({
+  review = Review.new({
     reviewer: critics.sample,
     body: Faker::Lorem.paragraph(6),
-    movie: movies.sample
+    movie: movies.sample,
+    published_on: [DateTime.now + (-100..0).to_a.sample, nil].sample,
     })
+    review.published_on ? true : false
+    review.save!
   end
   reviews = Review.all
-
-
-200.times do
-    Comment.create!({
-    review: reviews.sample,
-    body: Faker::Lorem.paragraph(6),
-    user: users.sample
-  })
-end
-comments = Comment.all
 
 200.times do
   Rating.create({
     user: users.sample,
     movie: movies.sample,
-    value: [0, 1, 2, 3, 4].sample + [0, 0.5, 1].sample
+    value: [0, 1, 2, 3, 4].sample + [0, 0.5, 1].sample,
+  })
+end
+
+200.times do 
+  Like.create({
+    user: users.sample,
+    review: reviews.sample
   })
 end
 
 finish = Time.now
 duration = (finish - start).round(1)
 
-puts "Seed started at: #{start}"
 puts "Seed finished at: #{finish}"
 puts "Duration: #{duration} seconds"
 
@@ -117,4 +118,4 @@ puts "#{Category.count} Categories created."
 puts "#{MovieCategory.count} MovieCategories exist."
 puts "#{Review.count} Reviews created."
 puts "#{Rating.count} Ratings created."
-puts "#{Comment.count} Comments created."
+puts "#{Like.count} Likes created."

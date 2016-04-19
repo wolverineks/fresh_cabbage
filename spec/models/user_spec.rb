@@ -2,7 +2,10 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
+  let(:admin) { FactoryGirl.create(:admin) }
+  let(:critic) { FactoryGirl.create(:critic) }
   let(:user) { FactoryGirl.create(:user) }
+  let(:review) { FactoryGirl.create(:review) }
 
   it "has a valid factory" do
     expect(user).to be_valid
@@ -32,28 +35,51 @@ RSpec.describe User, type: :model do
   it 'has a default role that is not critic' do
   end
 
-  it 'has many comments' do
-  end
-
   it 'has many ratings' do
   end
 
-  context "when user is not a critic" do
+  context "when user is a user" do
+    it 'is a user' do
+      expect(user.user?).to be true
+    end
+
+    it 'is not an admin' do
+      expect(user.admin?).to be false
+    end
+
     it 'is not a critic' do
+      expect(user.critic?).to be false
     end
   end
 
-  context "when user is an critic" do
+  context "when user is a critic" do
     it 'is a critic' do
+      expect(critic.critic?).to be true
+    end
+
+    it 'is not an admin' do
+      expect(critic.admin?).to be false
+    end
+
+    it 'is not a user' do
+      expect(critic.user?).to be false
     end
 
     it 'has many reviews' do
+      user.reviews << review
+      expect(user.reviews).to include review
     end
   end
 
   context "when user is an admin" do
     it 'is an admin' do
-
+      expect(admin.admin?).to be true
+    end
+    it 'is not a critic' do
+      expect(admin.critic?).to be false
+    end
+    it 'is not a user' do
+      expect(admin.user?).to be false
     end
   end
 

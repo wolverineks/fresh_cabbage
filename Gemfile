@@ -2,11 +2,13 @@ source 'https://rubygems.org'
 ruby "2.2.2"
 
 gem 'administrate', '~> 0.1.5'
+gem 'administrate-field-select', '~> 2.0', require: 'administrate/field/select_basic'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'devise', '~> 4.0.0'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails', '~> 4.1.1'
 gem 'pg', '~> 0.18.4'
+gem 'pg_search', '~> 1.0.5'
 gem 'rails', '4.2.4'
 gem 'sass-rails', '~> 5.0'
 gem 'sdoc', '~> 0.4.0', group: :doc

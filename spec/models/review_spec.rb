@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe Review, type: :model do
 
   let(:review) { FactoryGirl.create(:review) }
-  let(:comment) { FactoryGirl.create(:comment) }
 
   it 'belongs to a reviewer' do
     expect(review.reviewer).to be_instance_of User
@@ -19,28 +18,6 @@ RSpec.describe Review, type: :model do
 
   it 'has a body' do
     expect(review.body).to be_instance_of String
-  end
-
-  it 'has many comments' do
-    review.comments << comment
-    expect(review.comments).to include comment
-  end
-
-  it 'defaults to not published' do
-    expect(review.published).to be false
-  end
-
-  context "when not published" do
-    it 'is not published' do
-      expect(review.published?).to be false
-    end
-  end
-
-  context "when published" do
-    it 'is published' do
-      review.published = true
-      expect(review.published?).to be true
-    end
   end
 
   describe "when reviewer is not present" do
