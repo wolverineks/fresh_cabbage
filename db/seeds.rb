@@ -69,14 +69,13 @@ movies = Movie.all
 end
 categories = Category.all
 
-100.times do
-  Rating.create!({
-    value: Faker::Number.between(0,5),
-    user: users.sample,
+100.times do 
+  MovieCategory.create!({
     movie: movies.sample,
+    category: categories.sample
   })
 end
-categories = Category.all
+
 
 100.times do 
     Review.create!({
@@ -85,6 +84,15 @@ categories = Category.all
   })
 end
 reviews = Review.all
+
+100.times do
+  Rating.create!({
+    value: Faker::Number.between(0,5),
+    user: users.sample,
+    movie: movies.sample,
+  })
+end
+ratings = Rating.all
 
 200.times do 
     Comment.create!({
