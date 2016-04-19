@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Category, type: :model do
 
-  let(:category) { Category.new(title: "Test Category Title") }
+  # let(:category) { Category.new(title: "Test Category Title") }
 
   it 'has a title' do
 

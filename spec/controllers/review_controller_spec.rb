@@ -1,6 +1,6 @@
 RSpec.describe ReviewsController, type: :controller do
 
-  let(:review) { Factory.create(:review) }
+  # let(:review) { Factory.create(:review) }
 
   describe "GET #show" do
     it "assigns the requested review as @review" do

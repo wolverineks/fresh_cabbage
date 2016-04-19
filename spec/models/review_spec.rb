@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Review, type: :model do
 
-  let(:review) { Review.new(critic: user, movie: movie, body: "Test Review Body") }
+  # let(:review) { Review.new(critic: user, movie: movie, body: "Test Review Body") }
 
   it 'belongs to a critic' do
 
