@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
   has_many :reviews, foreign_key: :reviewer
   has_many :comments
 
+  scope :critics, ->{ where(role: 'critic') }
+  scope :admins, ->{ where(role: 'admin') }
+  scope :users, ->{ where(role: 'user') }
 
   def admin?
   	role == "admin"

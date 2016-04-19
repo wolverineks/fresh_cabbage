@@ -1,0 +1,15 @@
+<h1><%= @movie.title %></h1>
+<ul>
+  <li><%= display_critic_rating_average_for @movie %></li>
+  <li><%= display_user_rating_average_for @movie %></li>
+  <li><%= @movie.mpaa_rating %></li>
+  <li><%= @movie.release_date %></li>
+  <li><%= @movie.runtime %></li>
+  <li><%= @movie.synopsis %></li>
+</ul>
+<ul>
+  <% @reviews.each do |review| %>
+  <li><p><%= review.reviewer.username %> </p></li>
+  <li><p><%= review.body %> </p></li>
+  <% end %>
+</ul>
