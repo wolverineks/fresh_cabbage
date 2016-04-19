@@ -20,23 +20,6 @@ RSpec.describe Review, type: :model do
     expect(review.body).to be_instance_of String
   end
 
-  it 'defaults to not published' do
-    expect(review.published).to be false
-  end
-
-  context "when not published" do
-    it 'is not published' do
-      expect(review.published?).to be false
-    end
-  end
-
-  context "when published" do
-    it 'is published' do
-      review.published = true
-      expect(review.published?).to be true
-    end
-  end
-
   describe "when reviewer is not present" do
     it 'is not valid' do
       review.reviewer = nil
