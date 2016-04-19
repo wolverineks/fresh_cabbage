@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    resources :users
+resources :categories
+resources :comments
+resources :movies
+resources :movie_categories
+resources :ratings
+resources :reviews
+
+    root to: "users#index"
+  end
+
   get 'movies/index'
 
   devise_for :users, :controllers => { registrations: 'registrations' }
