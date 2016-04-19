@@ -1,17 +1,20 @@
 Rails.application.routes.draw do
 
+  # Recommended by Devise
   root to: "movies#index"
+
+  # Recommended by Devise
   devise_for :users, :controllers => { registrations: 'registrations' }
+
   resources :movies, only: [:show, :index] do
     resources :reviews, only: [:show, :index]
   end
-  # Recommended by Devise
 
+  resources :search, only: [:index]
 
   namespace :admin do
     resources :users
     resources :categories
-    resources :comments
     resources :movies
     resources :movie_categories
     resources :ratings

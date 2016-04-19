@@ -35,9 +35,6 @@ RSpec.describe User, type: :model do
   it 'has a default role that is not critic' do
   end
 
-  it 'has many comments' do
-  end
-
   it 'has many ratings' do
   end
 
