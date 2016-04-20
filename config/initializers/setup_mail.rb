@@ -1,4 +1,4 @@
-if Rails.env.development?
+if Rails.env.production?
   ActionMailer::Base.default_url_options = { host: 'https://powerful-mesa-57109.herokuapp.com' }
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
