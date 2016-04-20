@@ -4,40 +4,55 @@
   </section>
 
   <section class="movie-info">
-    <ul>
-      <li><%= display_critic_rating_average_for @movie %> Critic Rating</li>
+    <ul class="review-average">
+      <li class="line"><%= display_critic_rating_average_for @movie %> Critic Rating</li>
       <li><%= display_user_rating_average_for @movie %></li>
     </ul>
-    <h1><%= @movie.title %></h1>
-    <ul>
-      <li><%= @movie.mpaa_rating %></li>
-      <li><%= @movie.release_date %></li>
-      <li><%= @movie.runtime %> minutes</li>
-      <li><%= @movie.synopsis %></li>
+
+    <ul class="movie-summary">
+      <li class="title"><%= @movie.title %></li>
+      <li class="synopsis"><%= @movie.synopsis %></li>
+    </ul>
+
+    <ul class="movie-data">
+      <li class="line rating"><%= @movie.mpaa_rating %></li>
+      <li class="line"><%= @movie.runtime %> minutes</li>
+      <li class="line"><%= @movie.categories.first.name %></li>
+      <li><%= @movie.release_date.strftime("%d %B %Y") %></li>
+    </ul>
+
+    <ul class="movie-links">
+      <li>Watch Trailer</li>
+      <li>Visit Website</li>
     </ul>
   </section>
 </div>
 
-<ul>
-  <p>Critic Reviews</p>
+<div class="review-content">
+  <section class="review critic">
+    <h1><%= link_to "CRITIC REVIEWS", [@movie, :reviews] %></h1>
     <% @reviews.each do |review| %>
+    <ul>
       <% if review.reviewer.critic? %>
       <li>Author: <%= review.reviewer.username %></li>
       <li><%= link_to truncate(review.body, length: 30), [@movie, review] %></li>
       <% end %>
+    </ul>
     <% end %>
-    <span><%= link_to "All critic reviews", [@movie, :reviews] %></span>
-</ul>
+  </section>
 
-<ul>
-  <p>User Reviews</p>
+  <section class="review user">
+    <h1><%= link_to "USER REVIEWS", [@movie, :reviews] %></h1>
     <% @reviews.each do |review| %>
+    <ul>
       <% if review.reviewer.user? %>
       <li>Author: <%= review.reviewer.username %></li>
       <li><%= link_to truncate(review.body, length: 30), [@movie, review] %></li>
       <% end %>
+    </ul>
     <% end %>
-</ul>
+  </section>
+</div>
 
 <div id="rating-form">
   <%= render 'ratings/form' %>
