@@ -53,6 +53,9 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
+
+  # Mailer testing
+  # gem 'test_helper'
 end
 
 group :development do

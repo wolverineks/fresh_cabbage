@@ -12,6 +12,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
+  # NOTE: Fresh Cabbage Folks: defined in mailers/application_mailer.rb
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 
   # Configure the class responsible to send e-mails.
@@ -176,6 +177,8 @@ Devise.setup do |config|
   # :both  = Enables both strategies
   # :none  = No unlock strategy. You should handle unlocking by yourself.
   # config.unlock_strategy = :both
+  config.unlock_strategy = :email
+
 
   # Number of authentication tries before locking an account if lock_strategy
   # is failed attempts.
