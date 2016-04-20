@@ -46,8 +46,4 @@ class LikesController < ApplicationController
     @reviews = @movie.reviews
   end
 
-  # def set_count
-  #   @count = Like.where("review_id = #{@review.id}").size
-  # end
-
 end
