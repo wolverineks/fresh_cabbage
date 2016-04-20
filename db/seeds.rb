@@ -266,7 +266,7 @@ puts "Seed started at: #{start}"
 
 # Create Users
 unless User.find_by(username: 'q')
-	User.create!({
+	User.create({
 	  name: "q bert",
 	  username: "q",
 	  password: "password",
@@ -276,7 +276,7 @@ unless User.find_by(username: 'q')
 end
 
 unless User.find_by(username: 'sjobs')
-	User.create!({
+	User.create({
 	  name: "Steve Jobs",
 	  username: "sjobs",
 	  password: "password",
@@ -286,7 +286,7 @@ unless User.find_by(username: 'sjobs')
 end
 
 unless User.find_by(username: 'bgates')
-	User.create!({
+	User.create({
 	  name: "Bill Gates",
 	  username: "bgates",
 	  password: "password",
@@ -300,7 +300,7 @@ unless User.users.count > 50
 		user_name = Faker::Internet.user_name
 		user = User.find_by(username: user_name)
 		unless user
-		  User.create!({
+		  User.create({
 		    name: Faker::Name.name,
 		    username: user_name,
 		    email: Faker::Internet.email,
@@ -317,7 +317,7 @@ unless User.critics.count > 20
 		user_name = Faker::Internet.user_name
 		user = User.find_by(username: Faker::Internet.user_name)
 		unless user
-		  User.create!({
+		  User.create({
 		    name: Faker::Name.name,
 		    username: user_name,
 		    email: Faker::Internet.email,

@@ -6,6 +6,7 @@ gem 'administrate-field-select', '~> 2.0', require: 'administrate/field/select_b
 gem 'bourbon'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'devise', '~> 4.0.0'
+gem 'faker'
 gem 'friendly_id', '~> 5.1.0'
 gem 'hirb'
 gem 'jbuilder', '~> 2.0'
@@ -28,7 +29,6 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'factory_girl'
   gem 'factory_girl_rails'
-  gem 'faker'
   gem 'rspec-rails'
   gem 'selenium-webdriver'
   gem 'simplecov', :require => false
