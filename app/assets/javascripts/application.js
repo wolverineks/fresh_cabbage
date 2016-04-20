@@ -15,7 +15,8 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).ready(function(){
+$(document).on('ready page:load', function () {
+  // Actions to do
   $('.owl-carousel').owlCarousel({
     loop:true,
     margin:16,
@@ -41,5 +42,6 @@ $(document).ready(function(){
       }
     }
   })
-
 });
+
+
