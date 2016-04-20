@@ -295,25 +295,35 @@ unless User.find_by(username: 'bgates')
 	  })
 end
 
-20.times do
-  User.create!({
-    name: Faker::Name.name,
-    username: Faker::Internet.user_name,
-    email: Faker::Internet.email,
-    password: "password",
-    role: "user"
-  })
+unless User.users.count > 50
+	50.times do
+		user = User.find_by(username: Faker::Internet.user_name)
+		unless user
+		  User.assign_attributes({
+		    name: Faker::Name.name,
+		    username: Faker::Internet.user_name,
+		    email: Faker::Internet.email,
+		    password: "password",
+		    role: "user"
+		  })
+		end
+	end
 end
 users = User.all
 
-20.times do
-  User.create!({
-    name: Faker::Name.name,
-    username: Faker::Internet.user_name,
-    email: Faker::Internet.email,
-    password: "password",
-    role: "critic"
-  })
+unless User.critics.count > 20
+	20.times do
+		user = User.find_by(username: Faker::Internet.user_name)
+		unless user
+		  User.create!({
+		    name: Faker::Name.name,
+		    username: Faker::Internet.user_name,
+		    email: Faker::Internet.email,
+		    password: "password",
+		    role: "critic"
+		  })
+		end
+	end
 end
 critics = User.where(role: "critic")
 
@@ -362,7 +372,7 @@ movies = Movie.all
   end
   reviews = Review.all
 
-200.times do
+1000.times do
   Rating.create({
     user: users.sample,
     movie: movies.sample,
@@ -371,7 +381,7 @@ movies = Movie.all
 end
 
 
-200.times do
+1000.times do
   Rating.create({
     user: critics.sample,
     movie: movies.sample,
@@ -380,9 +390,16 @@ end
 end
 
 
-200.times do
+2000.times do
   Like.create({
     user: users.sample,
+    review: reviews.sample
+  })
+end
+
+2000.times do
+  Like.create({
+    user: critics.sample,
     review: reviews.sample
   })
 end
