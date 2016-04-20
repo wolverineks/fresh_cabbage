@@ -1,7 +1,29 @@
-<div class="movie">
-  <p><%= movie.title %></p>
-  <p><%= movie.release_date %></p>
-  <p><%= movie.mpaa_rating %></p>
-  <p><%= movie.runtime %></p>
-  <p><%= movie.synopsis %></p>
+<div class="movie-content">
+  <section class="poster-show">
+    <%= image_tag movie.image_url %>
+  </section>
+
+  <section class="movie-info">
+    <ul class="review-average">
+      <li class="line"><%= display_critic_rating_average_for movie %> Critic Rating</li>
+      <li><%= display_user_rating_average_for movie %> User Rating</li>
+    </ul>
+
+    <ul class="movie-summary">
+      <li class="title"><%= movie.title %></li>
+      <li class="synopsis"><%= movie.synopsis %></li>
+    </ul>
+
+    <ul class="movie-data">
+      <li class="line rating"><%= movie.mpaa_rating %></li>
+      <li class="line"><%= movie.runtime %> minutes</li>
+      <li class="line"><%= movie.categories.first.name %></li>
+      <li><%= movie.release_date.strftime("%d %B %Y") %></li>
+    </ul>
+
+    <ul class="movie-links">
+      <li>Watch Trailer</li>
+      <li>Visit Website</li>
+    </ul>
+  </section>
 </div>

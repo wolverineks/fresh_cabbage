@@ -1,8 +1,9 @@
-<h2>New Review</h2>
+<div class="review-content">
+  <h2>New Review</h2>
 
-<%= form_for [@movie, @review] do |f| %>
-  <%= f.text_area :body %>
-
-  <%= f.submit :publish %>
-  <%= f.submit :submit %>
-<% end %>
+  <%= form_for [@movie, @review] do |f| %>
+    <%= f.text_area :body %>
+    <%= f.submit :publish %>
+    <%= f.submit :submit %>
+  <% end %>
+</div>
