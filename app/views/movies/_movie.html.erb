@@ -18,7 +18,9 @@
       <li class="line rating"><%= movie.mpaa_rating %></li>
       <li class="line"><%= movie.runtime %> minutes</li>
       <li class="line"><%= movie.categories.first.name %></li>
-      <li><%= movie.release_date.strftime("%d %B %Y") %></li>
+      <% if movie.release_date %>
+        <li><%= movie.release_date.strftime("%d %B %Y") %></li>
+      <% end %>
     </ul>
 
     <ul class="movie-links">
