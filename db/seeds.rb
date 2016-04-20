@@ -255,13 +255,13 @@ start = Time.now
 puts "Seed started at: #{start}"
 
 # Delete current DB contents
-User.delete_all
-Movie.delete_all
-Category.delete_all
-MovieCategory.delete_all
-Review.delete_all
-Rating.delete_all
-Like.delete_all
+# User.delete_all
+# Movie.delete_all
+# Category.delete_all
+# MovieCategory.delete_all
+# Review.delete_all
+# Rating.delete_all
+# Like.delete_all
 
 
 # Create Users
@@ -311,39 +311,40 @@ users = User.all
 end
 critics = User.where(role: "critic")
 
-IMDB_TOP_250_TITLES.split(/\n+/).reject(&:blank?).each do |title|
-  puts title
-  movie = OMDB.title(title)
-  release_date = begin
-    Date.parse(movie.released)
-  rescue ArgumentError
-    nil
+if Movie.count < 200
+  IMDB_TOP_250_TITLES.split(/\n+/).reject(&:blank?).each do |title|
+    puts title
+    movie = OMDB.title(title)
+    release_date = begin
+      Date.parse(movie.released)
+    rescue ArgumentError
+      nil
+    end
+
+    puts movie
+
+    local_movie = Movie.find_or_initialize_by(imdb_id: movie.imdb_id)
+
+    local_movie.assign_attributes({
+      title: movie.title,
+      mpaa_rating: movie.rated,
+      runtime: movie.runtime,
+      release_date: release_date,
+      synopsis: movie.plot,
+      image_url: movie.poster,
+      omdb_json: movie
+    })
+    local_movie.save!
+
+    movie_genres = movie.genre.split(',').map(&:strip)
+    movie_genres.each do |genre|
+      category = Category.find_or_create_by(name: genre)
+      category.movies << local_movie unless category.movies.include?(local_movie)
+    end
   end
-
-  puts movie
-
-  local_movie = Movie.find_or_initialize_by(imdb_id: movie.imdb_id)
-
-  local_movie.assign_attributes({
-    title: movie.title,
-    mpaa_rating: movie.rated,
-    runtime: movie.runtime,
-    release_date: release_date,
-    synopsis: movie.plot,
-    image_url: movie.poster,
-    omdb_json: movie
-  })
-  local_movie.save!
 end
 movies = Movie.all
 
-25.times do
-  Category.create!({
-    movies: movies.sample(15),
-    name: Faker::Commerce.department,
-    })
-  end
-  categories= Category.all
 
 100.times do
   review = Review.create!({
@@ -362,6 +363,16 @@ movies = Movie.all
     value: [0, 1, 2, 3, 4].sample + [0, 0.5, 1].sample,
   })
 end
+
+
+200.times do
+  Rating.create({
+    user: critics.sample,
+    movie: movies.sample,
+    value: [0, 1, 2, 3, 4].sample + [0, 0.5, 1].sample,
+  })
+end
+
 
 200.times do
   Like.create({
