@@ -265,29 +265,35 @@ puts "Seed started at: #{start}"
 
 
 # Create Users
-User.create!({
-  name: "q bert",
-  username: "q",
-  password: "password",
-  email: "q@q.com",
-  role: "user"
-  })
+unless User.find_by(username: 'q')
+	User.create!({
+	  name: "q bert",
+	  username: "q",
+	  password: "password",
+	  email: "q@q.com",
+	  role: "user"
+	  })
+end
 
-User.create!({
-  name: "Steve Jobs",
-  username: "sjobs",
-  password: "password",
-  email: "steve@apple.com",
-  role: "admin"
-  })
+unless User.find_by(username: 'sjobs')
+	User.create!({
+	  name: "Steve Jobs",
+	  username: "sjobs",
+	  password: "password",
+	  email: "steve@apple.com",
+	  role: "admin"
+	  })
+end
 
-User.create!({
-  name: "Bill Gates",
-  username: "bgates",
-  password: "password",
-  email: "bill@ms.com",
-  role: "critic"
-  })
+unless User.find_by(username: 'bgates')
+	User.create!({
+	  name: "Bill Gates",
+	  username: "bgates",
+	  password: "password",
+	  email: "bill@ms.com",
+	  role: "critic"
+	  })
+end
 
 20.times do
   User.create!({
