@@ -39,3 +39,9 @@ bower.json
 
 # Ignore Travis CI file
 .travis.yml
+
+# For 'heroku local' : env vars for secrets
+.env
+
+# For 'heroku local' : run web server
+Procfile
