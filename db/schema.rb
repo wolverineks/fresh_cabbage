@@ -57,10 +57,10 @@ ActiveRecord::Schema.define(version: 20160420020444) do
     t.text     "synopsis",              null: false
     t.integer  "runtime",               null: false
     t.datetime "release_date"
+    t.float    "average_critic_rating"
     t.string   "image_url"
     t.string   "imdb_id"
     t.text     "omdb_json"
-    t.float    "average_critic_rating"
   end
 
   create_table "overall_averages", force: :cascade do |t|

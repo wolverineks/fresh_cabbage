@@ -1,0 +1,11 @@
+<% if movies.present? %>
+  <div class="owl-carousel owl-theme">
+    <% movies.each do |movie| %>
+      <div>
+      <%= link_to movie do %>
+        <%= image_tag movie.image_url %>
+      <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

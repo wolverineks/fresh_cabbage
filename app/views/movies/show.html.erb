@@ -1,18 +1,33 @@
-<h1><%= @movie.title %></h1>
-<ul>
-  <li><%= display_critic_rating_average_for @movie %></li>
-  <li><%= display_user_rating_average_for @movie %> </li>
-  <li><%= @movie.mpaa_rating %></li>
-  <li><%= @movie.release_date %></li>
-  <li><%= @movie.runtime %> minutes</li>
-  <li><%= @movie.synopsis %></li>
-</ul>
+<div class="movie-content">
+  <section class="poster-show">
+    <%= image_tag @movie.image_url %>
+  </section>
+
+  <section class="movie-info">
+    <ul>
+      <li><%= display_critic_rating_average_for @movie %> Critic Rating</li>
+      <li><%= display_user_rating_average_for @movie %></li>
+    </ul>
+    <h1><%= @movie.title %></h1>
+    <ul>
+      <li><%= @movie.mpaa_rating %></li>
+      <li><%= @movie.release_date %></li>
+      <li><%= @movie.runtime %> minutes</li>
+      <li><%= @movie.synopsis %></li>
+    </ul>
+  </section>
+</div>
+
 <ul>
   <p>Critic Reviews</p>
     <% @reviews.each do |review| %>
       <% if review.reviewer.critic? %>
       <li>Author: <%= review.reviewer.username %></li>
       <li><%= link_to truncate(review.body, length: 30), [@movie, review] %></li>
+      <%= render partial:'likes/counter', :locals => {:review => review} %>
+      <span class='like-counter'>
+      <%= link_to "Like", review_likes_path(review), { method: :post, :review_id => review.id, class: "like-link" } %>
+      </span><br>
       <% end %>
     <% end %>
     <span><%= link_to "All critic reviews", [@movie, :reviews] %></span>
@@ -24,6 +39,10 @@
       <% if review.reviewer.user? %>
       <li>Author: <%= review.reviewer.username %></li>
       <li><%= link_to truncate(review.body, length: 30), [@movie, review] %></li>
+      <%= render partial:'likes/counter', locals: {count: @count} %>
+      <span class='like-counter'>
+      <%= link_to "Like", review_likes_path(review), { method: :post, :review_id => review.id, class: "like-link" } %>
+      </span><br>
       <% end %>
     <% end %>
 </ul>

@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     resources :reviews, except: [:destroy]
   end
 
+  resources :reviews, only: [:show, :index] do
+    resources :likes, only: [:create]
+  end
+
   resources :search, only: [:index]
 
   namespace :admin do
