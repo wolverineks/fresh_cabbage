@@ -16,7 +16,7 @@ Rails.application.configure do
   # Don't care if the mailer can't send.
   #config.action_mailer.raise_delivery_errors = false
   # JACK REVIEW
-  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.raise_delivery_errors = false
   config.action_mailer.perform_deliveries = true
   
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
@@ -32,7 +32,8 @@ Rails.application.configure do
     domain: ENV['GMAIL_DOMAIN'],
     authentication: "plain",
     enable_starttls_auto: true,
-    username: ENV['GMAIL_USERNAME_DEV'],
+#    username: ENV['GMAIL_USERNAME_DEV'],
+    username: 'jacklh.cell@gmail.com',
     password: ENV['GMAIL_PASSWORD_DEV']
   }
 
