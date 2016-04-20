@@ -12,7 +12,6 @@ class ReviewDashboard < Administrate::BaseDashboard
     reviewer: Field::BelongsTo.with_options(class_name: "User"),
     movie: Field::BelongsTo,
     body: Field::Text,
-    comments: Field::HasMany,
     reviewer_id: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -28,7 +27,6 @@ class ReviewDashboard < Administrate::BaseDashboard
     :id,
     :reviewer,
     :movie,
-    :comments,
   ]
 
   # SHOW_PAGE_ATTRIBUTES
@@ -42,14 +40,12 @@ class ReviewDashboard < Administrate::BaseDashboard
     :created_at,
     :updated_at,
     :published,
-    :comments,
   ]
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :comments,
     :reviewer,
     :movie,
     :reviewer_id,

@@ -40,7 +40,6 @@ class UserDashboard < Administrate::BaseDashboard
     :name,
     :ratings,
     :reviews,
-    :comments,
     :role,
   ]
 
@@ -55,7 +54,6 @@ class UserDashboard < Administrate::BaseDashboard
     :ratings,
     :sign_in_count,
     # :reviews,
-    :comments,
     # :encrypted_password,
     # :reset_password_token,
     # :reset_password_sent_at,
@@ -78,7 +76,6 @@ class UserDashboard < Administrate::BaseDashboard
     :email,
     :ratings,
     # :reviews,
-    :comments,
     # :encrypted_password,
     # :reset_password_token,
     # :reset_password_sent_at,
