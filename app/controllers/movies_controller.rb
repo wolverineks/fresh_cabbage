@@ -19,6 +19,8 @@ class MoviesController < ApplicationController
 
   def show
     @reviews = @movie.reviews
+    @rating = Rating.find_by(user: current_user, movie: @movie)
+    @rating = Rating.new(value: 0) unless @rating
   end
 
   private

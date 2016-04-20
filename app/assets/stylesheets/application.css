@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
+.new_rating {
+  display: inline;
+}
+
+.edit_rating {
+  display: inline;
+}
+
+input['type:submit'] {
+  background-color: red;
+}

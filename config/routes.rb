@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :movies, only: [:show, :index] do
     resources :reviews, only: [:show, :index]
+    resources :ratings, only: [:create, :update]
   end
 
   resources :search, only: [:index]
