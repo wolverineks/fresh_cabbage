@@ -265,49 +265,67 @@ puts "Seed started at: #{start}"
 
 
 # Create Users
-User.create!({
-  name: "q bert",
-  username: "q",
-  password: "password",
-  email: "q@q.com",
-  role: "user"
-  })
+unless User.find_by(username: 'q')
+	User.create!({
+	  name: "q bert",
+	  username: "q",
+	  password: "password",
+	  email: "q@q.com",
+	  role: "user"
+	  })
+end
 
-User.create!({
-  name: "Steve Jobs",
-  username: "sjobs",
-  password: "password",
-  email: "steve@apple.com",
-  role: "admin"
-  })
+unless User.find_by(username: 'sjobs')
+	User.create!({
+	  name: "Steve Jobs",
+	  username: "sjobs",
+	  password: "password",
+	  email: "steve@apple.com",
+	  role: "admin"
+	  })
+end
 
-User.create!({
-  name: "Bill Gates",
-  username: "bgates",
-  password: "password",
-  email: "bill@ms.com",
-  role: "critic"
-  })
+unless User.find_by(username: 'bgates')
+	User.create!({
+	  name: "Bill Gates",
+	  username: "bgates",
+	  password: "password",
+	  email: "bill@ms.com",
+	  role: "critic"
+	  })
+end
 
-20.times do
-  User.create!({
-    name: Faker::Name.name,
-    username: Faker::Internet.user_name,
-    email: Faker::Internet.email,
-    password: "password",
-    role: "user"
-  })
+unless User.users.count > 50
+	50.times do
+		user_name = Faker::Internet.user_name
+		user = User.find_by(username: user_name)
+		unless user
+		  User.create!({
+		    name: Faker::Name.name,
+		    username: user_name,
+		    email: Faker::Internet.email,
+		    password: "password",
+		    role: "user"
+		  })
+		end
+	end
 end
 users = User.all
 
-20.times do
-  User.create!({
-    name: Faker::Name.name,
-    username: Faker::Internet.user_name,
-    email: Faker::Internet.email,
-    password: "password",
-    role: "critic"
-  })
+unless User.critics.count > 20
+	20.times do
+		user_name = Faker::Internet.user_name
+		user = User.find_by(username: Faker::Internet.user_name)
+		unless user
+		  User.create!({
+		    name: Faker::Name.name,
+		    username: user_name,
+		    email: Faker::Internet.email,
+		    password: "password",
+		    role: "critic"
+		  })
+		end
+	end
 end
 critics = User.where(role: "critic")
 
@@ -356,7 +374,7 @@ movies = Movie.all
   end
   reviews = Review.all
 
-200.times do
+1000.times do
   Rating.create({
     user: users.sample,
     movie: movies.sample,
@@ -365,7 +383,7 @@ movies = Movie.all
 end
 
 
-200.times do
+1000.times do
   Rating.create({
     user: critics.sample,
     movie: movies.sample,
@@ -374,9 +392,16 @@ end
 end
 
 
-200.times do
+2000.times do
   Like.create({
     user: users.sample,
+    review: reviews.sample
+  })
+end
+
+2000.times do
+  Like.create({
+    user: critics.sample,
     review: reviews.sample
   })
 end

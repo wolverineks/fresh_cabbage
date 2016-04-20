@@ -1,6 +1,9 @@
 class Movie < ActiveRecord::Base
   include PgSearch
+  extend FriendlyId
   serialize :omdb_json, JSON
+
+  friendly_id :title, use: [:slugged, :finders]
 
   validates :title, :mpaa_rating, :synopsis, :runtime, presence: true
   has_many :ratings

@@ -36,6 +36,10 @@
       <% if review.reviewer.critic? %>
       <li>Author: <%= review.reviewer.username %></li>
       <li><%= link_to truncate(review.body, length: 30), [@movie, review] %></li>
+      <%= render partial:'likes/counter', :locals => {:review => review} %>
+      <span class='like-counter'>
+      <%= link_to "Like", review_likes_path(review), { method: :post, :review_id => review.id, class: "like-link" } %>
+      </span><br>
       <% end %>
     </ul>
     <% end %>
@@ -48,6 +52,10 @@
       <% if review.reviewer.user? %>
       <li>Author: <%= review.reviewer.username %></li>
       <li><%= link_to truncate(review.body, length: 30), [@movie, review] %></li>
+      <%= render partial:'likes/counter', locals: {count: @count} %>
+      <span class='like-counter'>
+      <%= link_to "Like", review_likes_path(review), { method: :post, :review_id => review.id, class: "like-link" } %>
+      </span><br>
       <% end %>
     </ul>
     <% end %>
@@ -57,5 +65,7 @@
 <div id="rating-form">
   <%= render 'ratings/form' %>
 </div>
+
+<%= link_to "New Review", new_movie_review_path(@movie) %>
 
 <!--  <li><!-- %= link_to "truncate(review.body, length: 30)", review %></li> -->

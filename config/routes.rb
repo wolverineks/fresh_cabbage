@@ -7,8 +7,12 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations' }
 
   resources :movies, only: [:show, :index] do
-    resources :reviews, only: [:new, :show, :index]
     resources :ratings, only: [:create, :update]
+    resources :reviews, except: [:destroy]
+  end
+
+  resources :reviews, only: [:show, :index] do
+    resources :likes, only: [:create]
   end
 
   resources :search, only: [:index]
