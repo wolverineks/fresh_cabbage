@@ -12,52 +12,26 @@
 
   <section class="index-banner new-releases">
     <p>New Releases</p>
-    <ul>
-    <% @movies.each do |movie| %>
-        <li>
-        <%= link_to movie.title, movie %>
-        </li>
-    <% end %>
-    </ul>
+    <%= render 'movies/carousel', movies: @new_movies %>
   </section>
 
   <section class="index-banner top-critic">
     <p>Top Critic This Week</p>
-     <% @movies.each do |movie| %>
-        <li>
-        <%= link_to movie.title, movie %>
-        </li>
-    <% end %>
-    </ul>
+     <%= render 'movies/carousel', movies: @top_movies %>
   </section>
 
   <section class="index-banner best-drama">
     <p>Best in Drama</p>
-     <% @movies.each do |movie| %>
-        <li>
-        <%= link_to movie.title, movie %>
-        </li>
-    <% end %>
-    </ul>
+    <%= render 'movies/carousel', movies: @top_drama %>
   </section>
 
   <section class="index-banner best-action">
     <p>Best in Action</p>
-     <% @movies.each do |movie| %>
-        <li>
-        <%= link_to movie.title, movie %>
-        </li>
-    <% end %>
-    </ul>
+    <%= render 'movies/carousel', movies: @top_action %>
   </section>
   <section class="index-banner best-comedy">
-    <p>Best in Action</p>
-     <% @movies.each do |movie| %>
-        <li>
-        <%= link_to movie.title, movie %>
-        </li>
-    <% end %>
-    </ul>
+    <p>Best in Comedy</p>
+    <%= render 'movies/carousel', movies: @top_comedy %>
   </section>
 </div>
 
