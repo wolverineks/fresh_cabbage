@@ -8,18 +8,18 @@ class LikesController < ApplicationController
     if request.xhr?
       if @like.save
         @count = @like.review.likes.size
-        render 'movies/show'
+        redirect_to @movie
       else
         @count = @like.review.likes.size
-        render 'movies/show'
+        redirect_to @movie
       end
     else
       if @like.save
         @count = @like.review.likes.size
-        render 'movies/show'
+        redirect_to @movie
       else
         @count = @like.review.likes.size
-        render 'movies/show'
+        redirect_to @movie
       end
     end
 
