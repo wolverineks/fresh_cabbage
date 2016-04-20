@@ -84,9 +84,9 @@ RSpec.describe Movie, type: :model do
   end
 
   describe "when release_date is not present" do
-    it 'is not valid' do
+    it 'is valid' do
       movie.release_date = nil
-      expect(movie).not_to be_valid
+      expect(movie).to be_valid
     end
   end
 end

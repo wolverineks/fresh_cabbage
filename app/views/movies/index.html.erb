@@ -1,9 +1,40 @@
-<h1>Top Movies</h1>
+<div class="index-content">
+  <nav>
+    <ul class="index-nav">
+      <li>
+      <%= link_to root_path do %>
+        <%= image_tag "logo.png" %>
+      <% end %>
+      </li>
+      <li class="logo-name"><h1>FRESH CABBAGE</h1></li>
+    </ul>
+  </nav>
 
-<% @movies.each do |movie| %>
-  <ul>
-    <li>
-    <%= link_to movie.title, movie %>
-    </li>
-  </ul>
-<% end %>
+  <section class="index-banner new-releases">
+    <p>New Releases</p>
+    <%= render 'movies/carousel', movies: @new_movies %>
+  </section>
+
+  <section class="index-banner top-critic">
+    <p>Top Critic This Week</p>
+     <%= render 'movies/carousel', movies: @top_movies %>
+  </section>
+
+  <section class="index-banner best-drama">
+    <p>Best in Drama</p>
+    <%= render 'movies/carousel', movies: @top_drama %>
+  </section>
+
+  <section class="index-banner best-action">
+    <p>Best in Action</p>
+    <%= render 'movies/carousel', movies: @top_action %>
+  </section>
+  <section class="index-banner best-comedy">
+    <p>Best in Comedy</p>
+    <%= render 'movies/carousel', movies: @top_comedy %>
+  </section>
+</div>
+
+
+
+
