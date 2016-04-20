@@ -15,9 +15,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'slim-rails', '~> 3.0.1'
 gem 'turbolinks', '~> 2.5.3'
 gem 'uglifier', '~> 3.0.0'
-gem 'administrate'
-gem 'administrate-field-select', '~> 2.0', require: 'administrate/field/select_basic'
-gem 'pg_search'
 gem 'hirb'
 
 # Use ActiveModel has_secure_password
