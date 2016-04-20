@@ -6,10 +6,14 @@ Rails.application.routes.draw do
   # Recommended by Devise
   devise_for :users, :controllers => { registrations: 'registrations' }
 
+  get 'movies/top' => 'movies#top'
+  get 'movies/recent' => 'movies#recent'
+
   resources :movies, only: [:show, :index] do
     resources :ratings, only: [:create, :update]
     resources :reviews, except: [:destroy]
   end
+
 
   resources :reviews, only: [:show, :index] do
     resources :likes, only: [:create]

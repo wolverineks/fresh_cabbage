@@ -30,6 +30,16 @@ class MoviesController < ApplicationController
     @rating = Rating.new(value: 0) unless @rating
   end
 
+  def top
+    @movies = Movie.critically_acclaimed.limit(15)
+    render 'movies/top'
+  end
+
+  def recent
+    @movies = Movie.new_releases.limit(15)
+    render 'movies/recent'
+  end
+
   private
 
   def set_movie
