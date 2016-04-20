@@ -1,0 +1,7 @@
+<span>
+<% if review %>
+  <%= Like.where("review_id = #{review.id}").size %>
+<% else %>
+  <%= "0" %>
+<% end %>
+</span>
