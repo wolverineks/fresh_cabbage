@@ -2,7 +2,7 @@ class Movie < ActiveRecord::Base
   include PgSearch
   serialize :omdb_json, JSON
 
-  validates :title, :mpaa_rating, :synopsis, :runtime, :release_date, presence: true
+  validates :title, :mpaa_rating, :synopsis, :runtime, presence: true
   has_many :ratings
   has_many :reviews
   has_many :reviewers, through: :reviews

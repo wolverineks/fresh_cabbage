@@ -314,18 +314,26 @@ critics = User.where(role: "critic")
 IMDB_TOP_250_TITLES.split(/\n+/).reject(&:blank?).each do |title|
   puts title
   movie = OMDB.title(title)
+  release_date = begin
+    Date.parse(movie.released)
+  rescue ArgumentError
+    nil
+  end
+
   puts movie
 
-  Movie.create!({
+  local_movie = Movie.find_or_initialize_by(imdb_id: movie.imdb_id)
+
+  local_movie.assign_attributes({
     title: movie.title,
     mpaa_rating: movie.rated,
     runtime: movie.runtime,
-    release_date: Date.parse(movie.released),
+    release_date: release_date,
     synopsis: movie.plot,
     image_url: movie.poster,
-    imdb_id: movie.imdb_id,
     omdb_json: movie
   })
+  local_movie.save!
 end
 movies = Movie.all
 
