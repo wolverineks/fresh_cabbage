@@ -6,6 +6,7 @@ gem 'administrate-field-select', '~> 2.0', require: 'administrate/field/select_b
 gem 'bourbon'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'devise', '~> 4.0.0'
+gem 'hirb'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails', '~> 4.1.1'
 gem 'pg', '~> 0.18.4'
@@ -16,10 +17,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'slim-rails', '~> 3.0.1'
 gem 'turbolinks', '~> 2.5.3'
 gem 'uglifier', '~> 3.0.0'
-gem 'administrate'
-gem 'administrate-field-select', '~> 2.0', require: 'administrate/field/select_basic'
-gem 'pg_search'
-gem 'hirb'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
