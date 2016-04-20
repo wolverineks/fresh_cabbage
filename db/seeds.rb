@@ -299,7 +299,7 @@ unless User.users.count > 50
 	50.times do
 		user = User.find_by(username: Faker::Internet.user_name)
 		unless user
-		  User.assign_attributes({
+		  User.create!({
 		    name: Faker::Name.name,
 		    username: Faker::Internet.user_name,
 		    email: Faker::Internet.email,
