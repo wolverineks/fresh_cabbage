@@ -9,6 +9,7 @@ gem 'devise', '~> 4.0.0'
 gem 'hirb'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails', '~> 4.1.1'
+gem 'omdbapi', '~> 0.2.1'
 gem 'pg', '~> 0.18.4'
 gem 'pg_search', '~> 1.0.5'
 gem 'rails', '4.2.4'
@@ -42,6 +43,7 @@ group :development, :test do
 end
 
 group :development do
+  gem "awesome_print", require:"ap"
   gem 'spring'
   gem 'web-console', '~> 2.0'
 end
