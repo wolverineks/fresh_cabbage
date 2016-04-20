@@ -297,11 +297,12 @@ end
 
 unless User.users.count > 50
 	50.times do
-		user = User.find_by(username: Faker::Internet.user_name)
+		user_name = Faker::Internet.user_name
+		user = User.find_by(username: user_name)
 		unless user
 		  User.create!({
 		    name: Faker::Name.name,
-		    username: Faker::Internet.user_name,
+		    username: user_name,
 		    email: Faker::Internet.email,
 		    password: "password",
 		    role: "user"
@@ -313,11 +314,12 @@ users = User.all
 
 unless User.critics.count > 20
 	20.times do
+		user_name = Faker::Internet.user_name
 		user = User.find_by(username: Faker::Internet.user_name)
 		unless user
 		  User.create!({
 		    name: Faker::Name.name,
-		    username: Faker::Internet.user_name,
+		    username: user_name,
 		    email: Faker::Internet.email,
 		    password: "password",
 		    role: "critic"
