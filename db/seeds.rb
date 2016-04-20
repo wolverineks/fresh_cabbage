@@ -78,14 +78,12 @@ movies = Movie.all
   categories= Category.all
 
 100.times do
-  review = Review.new({
+  review = Review.create!({
     reviewer: critics.sample,
     body: Faker::Lorem.paragraph(6),
     movie: movies.sample,
     published_on: [DateTime.now + (-100..0).to_a.sample, nil].sample,
     })
-    review.published_on ? true : false
-    review.save!
   end
   reviews = Review.all
 
@@ -97,7 +95,7 @@ movies = Movie.all
   })
 end
 
-200.times do 
+200.times do
   Like.create({
     user: users.sample,
     review: reviews.sample

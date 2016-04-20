@@ -9,6 +9,8 @@ class Movie < ActiveRecord::Base
 
   scope :new_releases, -> { where("release_date < ?", DateTime.now).order(release_date: :desc).limit(10) }
 
+  scope :critically_acclaimed, -> { where.not(average_critic_rating: nil).order(average_critic_rating: :desc).limit(10) }
+
   pg_search_scope :search, :against => [:title, :synopsis]
 
 
@@ -24,11 +26,17 @@ class Movie < ActiveRecord::Base
     ratings.user_ratings
   end
 
-  def average_critic_rating
-    ratings.average_critic_rating
+  def reset_average_critic_rating
+    self.average_critic_rating = calculate_average_critic_rating
+  end
+
+  private
+
+  def calculate_average_critic_rating
+    critic_ratings.average(:value)
   end
 
   def average_user_rating
-    ratings.average_user_rating
+    user_ratings.average(:value)
   end
 end
