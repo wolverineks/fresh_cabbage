@@ -1,6 +1,8 @@
 <div class="movie-content">
   <section class="poster-show">
-    <%= image_tag movie.image_url %>
+    <a href="<%= movie_path(movie) %>">
+      <%= image_tag movie.image_url %>
+    </a>
   </section>
 
   <section class="movie-info">
