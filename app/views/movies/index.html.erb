@@ -1,63 +1,66 @@
-<nav>
-  <ul class="index-nav">
-    <li class="logo-name">FRESH CABBAGE</li>
-  </ul>
-  <ul class="search-form">
-    <li><%= render 'search/form' %></li>
-  </ul>
-</nav>
+<div class="index-content">
+  <nav>
+    <ul class="index-nav">
+      <li>
+      <%= link_to root_path do %>
+        <%= image_tag "logo.png" %>
+      <% end %>
+      </li>
+      <li class="logo-name"><h1>FRESH CABBAGE</h1></li>
+    </ul>
+  </nav>
 
-<section class="index-banner new-releases">
-  <p>New Releases</p>
-</section>
+  <section class="index-banner new-releases">
+    <p>New Releases</p>
+    <ul>
+    <% @movies.each do |movie| %>
+        <li>
+        <%= link_to movie.title, movie %>
+        </li>
+    <% end %>
+    </ul>
+  </section>
 
-<section>
+  <section class="index-banner top-critic">
+    <p>Top Critic This Week</p>
+     <% @movies.each do |movie| %>
+        <li>
+        <%= link_to movie.title, movie %>
+        </li>
+    <% end %>
+    </ul>
+  </section>
 
-</section>
+  <section class="index-banner best-drama">
+    <p>Best in Drama</p>
+     <% @movies.each do |movie| %>
+        <li>
+        <%= link_to movie.title, movie %>
+        </li>
+    <% end %>
+    </ul>
+  </section>
 
+  <section class="index-banner best-action">
+    <p>Best in Action</p>
+     <% @movies.each do |movie| %>
+        <li>
+        <%= link_to movie.title, movie %>
+        </li>
+    <% end %>
+    </ul>
+  </section>
+  <section class="index-banner best-comedy">
+    <p>Best in Action</p>
+     <% @movies.each do |movie| %>
+        <li>
+        <%= link_to movie.title, movie %>
+        </li>
+    <% end %>
+    </ul>
+  </section>
+</div>
 
-<% @movies.each do |movie| %>
-  <ul>
-    <li>
-    <%= link_to movie.title, movie %>
-    </li>
-  </ul>
-<% end %>
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
 
 
