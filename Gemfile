@@ -36,6 +36,7 @@ group :development, :test do
   gem 'factory_girl'
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'foreman'       # .env
   gem 'rspec-rails'
   gem 'selenium-webdriver'
   gem 'simplecov', :require => false

@@ -39,3 +39,6 @@ bower.json
 
 # Ignore Travis CI file
 .travis.yml
+
+# Ignore dev passwords
+Procfile
