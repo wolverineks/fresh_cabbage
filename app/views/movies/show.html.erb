@@ -1,36 +1,16 @@
-<div class="movie-content">
-  <section class="poster-show">
-    <%= image_tag @movie.image_url %>
+<%= render @movie %>
+
+<div class="review-header">
+  <section>
+    <h1><%= link_to "USER REVIEWS", [@movie, :reviews] %></h1>
   </section>
-
-  <section class="movie-info">
-    <ul class="review-average">
-      <li class="line"><%= display_critic_rating_average_for @movie %> Critic Rating</li>
-      <li><%= display_user_rating_average_for @movie %></li>
-    </ul>
-
-    <ul class="movie-summary">
-      <li class="title"><%= @movie.title %></li>
-      <li class="synopsis"><%= @movie.synopsis %></li>
-    </ul>
-
-    <ul class="movie-data">
-      <li class="line rating"><%= @movie.mpaa_rating %></li>
-      <li class="line"><%= @movie.runtime %> minutes</li>
-      <li class="line"><%= @movie.categories.first.name %></li>
-      <li><%= @movie.release_date.strftime("%d %B %Y") %></li>
-    </ul>
-
-    <ul class="movie-links">
-      <li>Watch Trailer</li>
-      <li>Visit Website</li>
-    </ul>
+  <section>
+    <h1><%= link_to "CRITIC REVIEWS", [@movie, :reviews] %></h1>
   </section>
 </div>
 
 <div class="review-content">
   <section class="review critic">
-    <h1><%= link_to "CRITIC REVIEWS", [@movie, :reviews] %></h1>
     <% @reviews.each do |review| %>
     <ul>
       <% if review.reviewer.critic? %>
@@ -45,8 +25,8 @@
     <% end %>
   </section>
 
+
   <section class="review user">
-    <h1><%= link_to "USER REVIEWS", [@movie, :reviews] %></h1>
     <% @reviews.each do |review| %>
     <ul>
       <% if review.reviewer.user? %>
@@ -63,9 +43,11 @@
 </div>
 
 <div id="rating-form">
-  <%= render 'ratings/form' %>
+  <ul>
+    <li><%= render 'ratings/form' %></li>
+    <li><%= link_to "Write a Review", new_movie_review_path(@movie) %></li>
+  </ul>
 </div>
 
-<%= link_to "New Review", new_movie_review_path(@movie) %>
 
 <!--  <li><!-- %= link_to "truncate(review.body, length: 30)", review %></li> -->

@@ -1,10 +1,11 @@
-<ul>
-  <li>Author: <%= @review.reviewer.username %></li>
-  <li><%= @review.body %></li>
-  <li>Published? = <%= !@review.published_on.nil? %></li>
+<div class="review-content">
+  <ul>
+    <li>Author: <%= @review.reviewer.username %></li>
+    <li><%= @review.body %></li>
+    <li>Published? = <%= !@review.published_on.nil? %></li>
 
-  <% if @review.reviewer == current_user %>
-  <li><%= link_to 'Edit review', edit_movie_review_path(@review.movie, @review) %></li>
-  <% end %>
-
-</ul>
+    <% if @review.reviewer == current_user %>
+    <li><%= link_to 'Edit review', edit_movie_review_path(@review.movie, @review) %></li>
+    <% end %>
+  </ul>
+</div>
