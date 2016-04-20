@@ -1,0 +1,53 @@
+<%= render @movie %>
+
+<div class="review-header">
+  <section>
+    <h1><%= link_to "USER REVIEWS", [@movie, :reviews] %></h1>
+  </section>
+  <section>
+    <h1><%= link_to "CRITIC REVIEWS", [@movie, :reviews] %></h1>
+  </section>
+</div>
+
+<div class="review-content">
+  <section class="review critic">
+    <% @reviews.each do |review| %>
+    <ul>
+      <% if review.reviewer.critic? %>
+      <li>Author: <%= review.reviewer.username %></li>
+      <li><%= link_to truncate(review.body, length: 30), [@movie, review] %></li>
+      <%= render partial:'likes/counter', :locals => {:review => review} %>
+      <span class='like-counter'>
+      <%= link_to "Like", review_likes_path(review), { method: :post, :review_id => review.id, class: "like-link" } %>
+      </span><br>
+      <% end %>
+    </ul>
+    <% end %>
+  </section>
+
+
+  <section class="review user">
+    <% @reviews.each do |review| %>
+    <ul>
+      <% if review.reviewer.user? %>
+      <li>Author: <%= review.reviewer.username %></li>
+      <li><%= link_to truncate(review.body, length: 30), [@movie, review] %></li>
+      <%= render partial:'likes/counter', locals: {count: @count} %>
+      <span class='like-counter'>
+      <%= link_to "Like", review_likes_path(review), { method: :post, :review_id => review.id, class: "like-link" } %>
+      </span><br>
+      <% end %>
+    </ul>
+    <% end %>
+  </section>
+</div>
+
+<div id="rating-form">
+  <ul>
+    <li><%= render 'ratings/form' %></li>
+    <li><%= link_to "Write a Review", new_movie_review_path(@movie) %></li>
+  </ul>
+</div>
+
+
+<!--  <li><!-- %= link_to "truncate(review.body, length: 30)", review %></li> -->

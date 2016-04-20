@@ -1,0 +1,9 @@
+<div class="review-content">
+  <h2>Edit Review</h2>
+
+  <%= form_for [@movie, @review] do |f| %>
+    <%= f.text_area :body %>
+    <%= f.submit :publish %>
+    <%= f.submit :submit %>
+  <% end %>
+</div>

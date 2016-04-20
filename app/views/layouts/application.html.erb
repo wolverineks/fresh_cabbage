@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ClientProject</title>
+  <title>FreshCabbage</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+<input type="checkbox" id="sidebartoggler" name="" value="">
 
+<div class="page-wrap">
+
+  <label for="sidebartoggler" class="toggle">☰</label>
+
+  <div class="page-content">
+    <%= yield %>
+  </div>
+
+  <%= render partial: "layouts/sidebar" %>
+</div>
 </body>
 </html>

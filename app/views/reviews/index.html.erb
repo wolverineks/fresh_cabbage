@@ -1,0 +1,12 @@
+<div class="review-content">
+  <% @reviews.each do |review| %>
+    <ul>
+      <li>
+      <%= link_to truncate(review.body, length: 35), [@movie, review] %>
+      </li>
+
+    </ul>
+  <% end %>
+<div>
+
+
