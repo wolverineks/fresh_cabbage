@@ -3,10 +3,8 @@
     <li>
     <%= link_to truncate(review.body, length: 35), [@movie, review] %>
     </li>
-    <li>
-    <%= link_to "Like", review_likes_path(review), { method: :post, remote: true, :review_id => review.id }%>
-    </li>
+
   </ul>
 <% end %>
 
-<!-- [:review, :likes], params:{ :review_id => review.id } -->
+
