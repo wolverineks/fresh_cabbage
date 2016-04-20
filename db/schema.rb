@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160419234241) do
+ActiveRecord::Schema.define(version: 20160420012902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,7 +43,10 @@ ActiveRecord::Schema.define(version: 20160419234241) do
     t.string   "mpaa_rating",           null: false
     t.text     "synopsis",              null: false
     t.integer  "runtime",               null: false
-    t.datetime "release_date",          null: false
+    t.datetime "release_date"
+    t.string   "image_url"
+    t.string   "imdb_id"
+    t.text     "omdb_json"
     t.float    "average_critic_rating"
   end
 
