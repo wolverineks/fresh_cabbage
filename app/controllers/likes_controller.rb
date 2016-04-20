@@ -8,23 +8,19 @@ class LikesController < ApplicationController
     @like = Like.create(review: @review, user: current_user)
     if request.xhr?
       if @like.save
-        @count = Like.where("review_id = #{@review.id}").size
-        puts "#{@count}"
-
+        @count = @like.review.likes.size
+        render 'movies/show'
       else
-        @count = Like.where("review_id = #{@review.id}").size
-        'movies/show'
-        puts "#{@count}"
+        @count = @like.review.likes.size
+        render 'movies/show'
       end
     else
       if @like.save
-        @count = Like.where("review_id = #{@review.id}").size
+        @count = @like.review.likes.size
         render 'movies/show'
-        puts "#{@count}"
       else
-        @count = Like.where("review_id = #{@review.id}").size
+        @count = @like.review.likes.size
         render 'movies/show'
-        puts "#{@count}"
       end
     end
   end
