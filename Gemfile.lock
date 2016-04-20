@@ -264,6 +264,7 @@ PLATFORMS
 
 DEPENDENCIES
   administrate
+  bourbon
   byebug
   capybara
   coffee-rails (~> 4.1.0)
