@@ -1,5 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  #default from: "notifications@FreshCabbage.net"
-  default from: "notifications1@FreshCabbage.net"
+  #devise.rb is actually taking precedence.
+  default from: "notifications@FreshCabbage.net"
   layout 'mailer'
 end
