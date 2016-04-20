@@ -21,5 +21,6 @@ class Rating < ActiveRecord::Base
 
   def recalculate_average_for_movie
     movie.reset_average_critic_rating
+    movie.save
   end
 end
