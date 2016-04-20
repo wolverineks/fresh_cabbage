@@ -272,6 +272,7 @@ PLATFORMS
 DEPENDENCIES
   administrate (~> 0.1.5)
   administrate-field-select (~> 2.0)
+  bourbon
   byebug
   capybara
   coffee-rails (~> 4.1.0)

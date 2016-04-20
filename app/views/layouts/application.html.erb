@@ -8,12 +8,18 @@
 </head>
 <body>
 
-<%= render 'layouts/nav' %>
-      <!-- recommended by devise -->
-       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+<input type="checkbox" id="sidebartoggler" name="" value="">
 
-<%= yield %>
+<div class="page-wrap">
+
+  <label for="sidebartoggler" class="toggle">☰</label>
+
+  <div class="page-content">
+    <%= yield %>
+  </div>
+
+  <%= render partial: "layouts/sidebar" %>
+</div>
 
 <%= render 'search/form' %>
 
