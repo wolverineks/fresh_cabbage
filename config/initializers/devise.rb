@@ -15,7 +15,7 @@ Devise.setup do |config|
   # with default "from" parameter.
   # NOTE: Fresh Cabbage Folks: defined in mailers/application_mailer.rb
   #config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
-  config.mailer_sender = 'jacklh.cell@gmail.com'
+  config.mailer_sender = 'notifications@FreshCabbage.net'
 
   # Configure the class responsible to send e-mails.
   config.mailer = 'Devise::Mailer'

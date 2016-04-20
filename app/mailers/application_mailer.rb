@@ -1,5 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
   #default from: "notifications@FreshCabbage.net"
-  default from: "jacklh.cell@gmail.com"
+  default from: "notifications1@FreshCabbage.net"
   layout 'mailer'
 end
