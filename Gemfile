@@ -6,6 +6,7 @@ gem 'administrate-field-select', '~> 2.0', require: 'administrate/field/select_b
 gem 'bourbon'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'devise', '~> 4.0.0'
+gem 'friendly_id', '~> 5.1.0'
 gem 'hirb'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails', '~> 4.1.1'
@@ -18,16 +19,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'slim-rails', '~> 3.0.1'
 gem 'turbolinks', '~> 2.5.3'
 gem 'uglifier', '~> 3.0.0'
-gem 'hirb'
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
 group :development, :test do
   gem 'byebug'
