@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :movie_categories
     resources :ratings
     resources :reviews
+    resources :likes
 
     root to: "users#index"
   end

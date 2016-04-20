@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class ReviewDashboard < Administrate::BaseDashboard
+class LikeDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -9,12 +9,8 @@ class ReviewDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    reviewer: Field::BelongsTo.with_options(class_name: "User"),
-    movie: Field::BelongsTo,
-    likes: Field::HasMany,
-    body: Field::Text,
-    reviewer_id: Field::Number,
-    published_on: Field::DateTime,
+    review: Field::BelongsTo,
+    user: Field::BelongsTo,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }
@@ -26,21 +22,17 @@ class ReviewDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :id,
-    :reviewer,
-    :movie,
-    :likes,
+    :review,
+    :user,
+    # :created_at,
   ]
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :id,
-    :reviewer,
-    :movie,
-    :body,
-    :likes,
-    # :reviewer_id,
-    :published_on,
+    :review,
+    :user,
     :created_at,
     :updated_at,
   ]
@@ -49,16 +41,14 @@ class ReviewDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :reviewer,
-    :movie,
-    # :reviewer_id,
-    :body,
+    :review,
+    :user,
   ]
 
-  # Overwrite this method to customize how reviews are displayed
+  # Overwrite this method to customize how movie categories are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(review)
-  #   "Review ##{review.id}"
+  # def display_resource(movie_category)
+  #   "Like ##{like.id}"
   # end
 end
