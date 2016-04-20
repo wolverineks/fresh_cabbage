@@ -6,9 +6,12 @@ class User < ActiveRecord::Base
 
   validates :email, :username, { uniqueness: true, presence: true }
   has_many :ratings
-  has_many :reviews, foreign_key: :reviewer
-  has_many :comments
+  has_many :reviews, foreign_key: :reviewer_id
+  has_many :likes
 
+  scope :critics, ->{ where(role: 'critic') }
+  scope :admins, ->{ where(role: 'admin') }
+  scope :users, ->{ where(role: 'user') }
 
   def admin?
   	role == "admin"

@@ -11,8 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160419162810) do
-
+ActiveRecord::Schema.define(version: 20160419234241) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,13 +19,14 @@ ActiveRecord::Schema.define(version: 20160419162810) do
     t.string "name", null: false
   end
 
-  create_table "comments", force: :cascade do |t|
+  create_table "likes", force: :cascade do |t|
     t.integer  "user_id",    null: false
-    t.text     "body",       null: false
     t.integer  "review_id",  null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "likes", ["user_id", "review_id"], name: "index_likes_on_user_id_and_review_id", unique: true, using: :btree
 
   create_table "movie_categories", force: :cascade do |t|
     t.integer  "movie_id",    null: false
@@ -38,11 +38,12 @@ ActiveRecord::Schema.define(version: 20160419162810) do
   add_index "movie_categories", ["movie_id", "category_id"], name: "index_movie_categories_on_movie_id_and_category_id", unique: true, using: :btree
 
   create_table "movies", force: :cascade do |t|
-    t.string   "title",        null: false
-    t.string   "mpaa_rating",  null: false
-    t.text     "synopsis",     null: false
-    t.integer  "runtime",      null: false
-    t.datetime "release_date", null: false
+    t.string   "title",                 null: false
+    t.string   "mpaa_rating",           null: false
+    t.text     "synopsis",              null: false
+    t.integer  "runtime",               null: false
+    t.datetime "release_date",          null: false
+    t.float    "average_critic_rating"
   end
 
   create_table "ratings", force: :cascade do |t|
@@ -54,12 +55,12 @@ ActiveRecord::Schema.define(version: 20160419162810) do
   add_index "ratings", ["user_id", "movie_id"], name: "index_ratings_on_user_id_and_movie_id", unique: true, using: :btree
 
   create_table "reviews", force: :cascade do |t|
-    t.integer  "reviewer_id",                 null: false
-    t.text     "body",                        null: false
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.integer  "reviewer_id",  null: false
+    t.text     "body",         null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.integer  "movie_id"
-    t.boolean  "published",   default: false
+    t.date     "published_on"
   end
 
   create_table "users", force: :cascade do |t|

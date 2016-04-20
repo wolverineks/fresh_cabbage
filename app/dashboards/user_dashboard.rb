@@ -24,7 +24,7 @@ class UserDashboard < Administrate::BaseDashboard
     last_sign_in_ip: Field::String.with_options(searchable: false),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    role: Field::String,
+    role: Field::SelectBasic.with_options({choices: ['admin', 'critic', 'user']}),
     username: Field::String,
     name: Field::String,
   }
@@ -36,10 +36,12 @@ class UserDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :id,
+    :username,
     :name,
     :ratings,
-    # :reviews,
+    :reviews,
     :comments,
+    :role,
   ]
 
   # SHOW_PAGE_ATTRIBUTES
@@ -70,28 +72,28 @@ class UserDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :ratings,
-    :reviews,
-    :comments,
-    :email,
-    :encrypted_password,
-    :reset_password_token,
-    :reset_password_sent_at,
-    :remember_created_at,
-    :sign_in_count,
-    :current_sign_in_at,
-    :last_sign_in_at,
-    :current_sign_in_ip,
-    :last_sign_in_ip,
-    :role,
     :username,
     :name,
+    :role,
+    :email,
+    :ratings,
+    # :reviews,
+    :comments,
+    # :encrypted_password,
+    # :reset_password_token,
+    # :reset_password_sent_at,
+    # :remember_created_at,
+    # :sign_in_count,
+    # :current_sign_in_at,
+    # :last_sign_in_at,
+    # :current_sign_in_ip,
+    # :last_sign_in_ip,
   ]
 
   # Overwrite this method to customize how users are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(user)
-  #   "User ##{user.id}"
-  # end
+  def display_resource(user)
+    "#{user.username}"
+  end
 end
