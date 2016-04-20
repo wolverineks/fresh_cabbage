@@ -4,13 +4,12 @@
   </ul>
 
   <ul>
-    <li>Home</li>
+    <li><%= link_to 'Home', root_path %></li>
   </ul>
   <ul>
     <li>REVIEWS</li>
-    <li>Top Critic</li>
-    <li>Top User</li>
-    <li>Recent</li>
+    <li><%= link_to 'Recent', movies_recent_path %></li>
+    <li><%= link_to 'Top', movies_top_path %></li>
   </ul>
   <ul>
     <li>CATEGORIES</li>
