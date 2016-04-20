@@ -1,0 +1,60 @@
+.sidebar
+  +position(fixed, 0 0 0 0px)
+  +transition()
+  width: 120px
+  padding: 16px
+  background: #D0D0D0
+  z-index: 1
+
+  img
+    height: 48px
+
+  ul
+    padding: 0
+    text-align: center
+
+    li
+      color: #1B1B1B
+      font-family: "Ubuntu", sans-serif
+      font-size: 12px
+      margin-bottom: 16px
+      -webkit-font-smoothing: antialiased
+      cursor: pointer
+
+      &:hover
+        color: #44AE54
+
+  ul.user-links
+    margin-top: 3em
+
+.toggle
+  text-decoration: none
+  text-align: center
+  font-size: 30px
+  width: 28px
+  height: 28px
+  color: #1B1B1B
+  +transition()
+  +position(fixed, 16px 0 0 16px)
+  z-index: 1
+
+.sidebar
+  +position(fixed, 0 0 0 -190px)
+
+#sidebartoggler
+  display: none
+
+  &:checked + .page-wrap
+
+    .sidebar
+      left: 0px
+
+    .toggle
+      left: 180px
+
+
+
+
+
+
+
