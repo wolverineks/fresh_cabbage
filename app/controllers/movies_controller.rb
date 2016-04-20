@@ -22,6 +22,10 @@ class MoviesController < ApplicationController
   	#	trending_movies[cat] = []
   	#	trending_movies << Movie.order()
   	#end
+    # @comedy = Category.find_by(name: 'Comedy')
+    @romance = Category.find(9)
+    # @drama = Category.find_by(name: 'Drama')
+    # @action = Category.find_by(name: 'Action')
   end
 
   def show
