@@ -15,14 +15,12 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   #config.action_mailer.raise_delivery_errors = false
-  # JACK REVIEW
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.perform_deliveries = true
   
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   #config.action_mailer.default_url_options = { host: '38.140.110.114', port: 3000 }
 
-  # JACK ADDED
   #config.action_mailer.default charset: "utf-8"
   #config.action_mailer.delivery_method = :sendmail
   config.action_mailer.delivery_method = :smtp
@@ -32,8 +30,7 @@ Rails.application.configure do
     domain: ENV['GMAIL_DOMAIN'],
     authentication: "plain",
     enable_starttls_auto: true,
-#    username: ENV['GMAIL_USERNAME_DEV'],
-    username: 'jacklh.cell@gmail.com',
+    username: ENV['GMAIL_USERNAME_DEV'],
     password: ENV['GMAIL_PASSWORD_DEV']
   }
 
