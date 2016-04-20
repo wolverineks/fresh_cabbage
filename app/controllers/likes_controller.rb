@@ -1,6 +1,5 @@
 class LikesController < ApplicationController
   before_action :set_review, only: [:create]
-  # before_action :set_count, only: [:create]
   before_action :set_movie, only: [:create]
   before_action :set_reviews, only: [:create]
 
@@ -23,6 +22,7 @@ class LikesController < ApplicationController
         render 'movies/show'
       end
     end
+
   end
 
 

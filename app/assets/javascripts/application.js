@@ -14,3 +14,32 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){
+  $('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:16,
+    responsiveClass:true,
+    responsive:{
+      0:{
+          items:1
+      },
+      300:{
+          items:3
+      },
+      600:{
+          items:5
+      },
+      800:{
+          items:8
+      },
+      900:{
+          items: 7
+      },
+      1000:{
+          items: 8
+      }
+    }
+  })
+
+});

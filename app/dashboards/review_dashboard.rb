@@ -11,12 +11,12 @@ class ReviewDashboard < Administrate::BaseDashboard
     id: Field::Number,
     reviewer: Field::BelongsTo.with_options(class_name: "User"),
     movie: Field::BelongsTo,
+    likes: Field::HasMany,
     body: Field::Text,
-    comments: Field::HasMany,
     reviewer_id: Field::Number,
+    published_on: Field::DateTime,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    published: Field::Boolean,
   }
 
   # COLLECTION_ATTRIBUTES
@@ -28,7 +28,7 @@ class ReviewDashboard < Administrate::BaseDashboard
     :id,
     :reviewer,
     :movie,
-    :comments,
+    :likes,
   ]
 
   # SHOW_PAGE_ATTRIBUTES
@@ -38,23 +38,21 @@ class ReviewDashboard < Administrate::BaseDashboard
     :reviewer,
     :movie,
     :body,
+    :likes,
     # :reviewer_id,
+    :published_on,
     :created_at,
     :updated_at,
-    :published,
-    :comments,
   ]
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :comments,
     :reviewer,
     :movie,
-    :reviewer_id,
+    # :reviewer_id,
     :body,
-    :published,
   ]
 
   # Overwrite this method to customize how reviews are displayed

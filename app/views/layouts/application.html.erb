@@ -5,18 +5,25 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+<<<<<<< HEAD
 
+=======
+  <link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet' type='text/css'>
+>>>>>>> 14628721a09cc08884198859c89b03de5f5b6be6
 </head>
 <body>
 
-<%= render 'layouts/nav' %>
-      <!-- recommended by devise -->
-       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+<input type="checkbox" id="sidebartoggler" name="" value="">
 
-<%= yield %>
+<div class="page-wrap">
 
-<%= render 'search/form' %>
+  <label for="sidebartoggler" class="toggle">☰</label>
 
+  <div class="page-content">
+    <%= yield %>
+  </div>
+
+  <%= render partial: "layouts/sidebar" %>
+</div>
 </body>
 </html>
