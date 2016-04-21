@@ -1,0 +1,4 @@
+- (1..5).each do |number|
+  = form_for [@movie, @rating], remote: true do |f|
+    - image_name = (@rating.value.to_i >= number) ? 'full.png' : 'empty.png'
+    input type="image" name="rating" value="#{number}" src="#{image_path image_name}"
