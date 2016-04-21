@@ -1,54 +1,6 @@
-<%= form_for [@movie, @rating], remote: true do |f| %>
-  <input type="image" name="rating" value="1"
-
-  <% if @rating.value.to_i > 0 %>
-    src="https://raw.githubusercontent.com/ficxin/fresh_cabbage/develop/app/assets/images/full.png">
-  <% else %>
-    src="https://raw.githubusercontent.com/ficxin/fresh_cabbage/develop/app/assets/images/empty.png">
+<% (1..5).each do |number| %>
+  <%= form_for [@movie, @rating], remote: true do |f| %>
+    <% image_name = (@rating.value.to_i >= number) ? 'full.png' : 'empty.png' %>
+    <input type="image" name="rating" value="<%= number %>" src="<%= image_path image_name %>">
   <% end %>
-
-<% end %>
-
-<%= form_for [@movie, @rating], remote: true do |f| %>
-  <input type="image" name="rating" value="2"
-
-  <% if @rating.value.to_i > 1 %>
-    src="https://raw.githubusercontent.com/ficxin/fresh_cabbage/develop/app/assets/images/full.png">
-  <% else %>
-    src="https://raw.githubusercontent.com/ficxin/fresh_cabbage/develop/app/assets/images/empty.png">
-  <% end %>
-
-<% end %>
-
-<%= form_for [@movie, @rating], remote: true do |f| %>
-  <input type="image" name="rating" value="3"
-
-  <% if @rating.value.to_i > 2 %>
-    src="https://raw.githubusercontent.com/ficxin/fresh_cabbage/develop/app/assets/images/full.png">
-  <% else %>
-    src="https://raw.githubusercontent.com/ficxin/fresh_cabbage/develop/app/assets/images/empty.png">
-  <% end %>
-
-<% end %>
-
-<%= form_for [@movie, @rating], remote: true do |f| %>
-  <input type="image" name="rating" value="4"
-
-  <% if @rating.value.to_i > 3 %>
-    src="https://raw.githubusercontent.com/ficxin/fresh_cabbage/develop/app/assets/images/full.png">
-  <% else %>
-    src="https://raw.githubusercontent.com/ficxin/fresh_cabbage/develop/app/assets/images/empty.png">
-  <% end %>
-
-<% end %>
-
-<%= form_for [@movie, @rating], remote: true do |f| %>
-  <input type="image" name="rating" value="5"
-
-  <% if @rating.value.to_i > 4 %>
-    src="https://raw.githubusercontent.com/ficxin/fresh_cabbage/develop/app/assets/images/full.png">
-  <% else %>
-    src="https://raw.githubusercontent.com/ficxin/fresh_cabbage/develop/app/assets/images/empty.png">
-  <% end %>
-
 <% end %>
